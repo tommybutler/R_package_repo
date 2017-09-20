@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: The 'plog' C++ Logging Library</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for plogr-package {plogr}"><tr><td>plogr-package {plogr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>The 'plog' C++ Logging Library</h2>
+
+<h3>Description</h3>
+
+<p>A simple header-only logging library for C++.
+Add 'LinkingTo: plogr' to 'DESCRIPTION', and '#include &lt;plogr.h&gt;' in your C++ modules to use it.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+plogr_demo &lt;- Rcpp::cppFunction(depends = "plogr", '
+// C++ code begin
+#include &lt;plogr.h&gt;
+
+RObject plogr_demo() {
+  plog::init_r(plog::info);
+  LOG_INFO &lt;&lt; "shown";
+  LOG_DEBUG &lt;&lt; "not shown";
+  plog::init_r("DEBUG");
+  LOG_DEBUG &lt;&lt; "shown now";
+  return R_NilValue;
+}
+
+#include &lt;Rcpp.h&gt; // not necessary to use plogr
+// C++ code end
+'
+)
+
+plogr_demo()
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>plogr</em> version 0.1-1 <a href="00Index.html">Index</a>]</div>
+</body></html>

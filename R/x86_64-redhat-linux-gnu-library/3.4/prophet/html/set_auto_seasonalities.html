@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Set seasonalities that were left on auto.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for set_auto_seasonalities {prophet}"><tr><td>set_auto_seasonalities {prophet}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Set seasonalities that were left on auto.</h2>
+
+<h3>Description</h3>
+
+<p>Turns on yearly seasonality if there is &gt;=2 years of history.
+Turns on weekly seasonality if there is &gt;=2 weeks of history, and the
+spacing between dates in the history is &lt;7 days.
+Turns on daily seasonality if there is &gt;=2 days of history, and the spacing
+between dates in the history is &lt;1 day.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+set_auto_seasonalities(m)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>m</code></td>
+<td>
+<p>Prophet object.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>The prophet model with seasonalities set.
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>prophet</em> version 0.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

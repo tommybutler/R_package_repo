@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: On Balance Volume (OBV)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for OBV {TTR}"><tr><td>OBV {TTR}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>On Balance Volume (OBV)</h2>
+
+<h3>Description</h3>
+
+<p>On Balance Volume (OBV) is a measure of the money flowing into or out of a
+security.  It is similar to Chaikin Accumulation / Distribution.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+OBV(price, volume)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>price</code></td>
+<td>
+<p>Price series that is coercible to xts or matrix.</p>
+</td></tr>
+<tr valign="top"><td><code>volume</code></td>
+<td>
+<p>Volume series that is coercible to xts or matrix, that
+corresponds to price object.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>OBV is calculated by adding (subtracting) each day's volume to a running
+cumulative total when the security's price closes higher (lower).
+</p>
+
+
+<h3>Value</h3>
+
+<p>A object of the same class as <code>price</code> and <code>volume</code> or a
+vector (if <code>try.xts</code> fails) containing the OBV values.
+</p>
+
+
+<h3>Note</h3>
+
+<p>OBV is usually compared with the price chart of the underlying security
+to look for divergences/confirmation.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Joshua Ulrich
+</p>
+
+
+<h3>References</h3>
+
+<p>The following site(s) were used to code/document this
+indicator:<br /> <a href="http://www.fmlabs.com/reference/OBV.htm">http://www.fmlabs.com/reference/OBV.htm</a><br />
+<a href="https://www.metastock.com/Customer/Resources/TAAZ/?p=82">https://www.metastock.com/Customer/Resources/TAAZ/?p=82</a><br />
+<a href="https://www.linnsoft.com/techind/balance-open-interest">https://www.linnsoft.com/techind/balance-open-interest</a><br />
+<a href="http://www.stockcharts.com/school/doku.php?id=chart_school:technical_indicators:on_balance_volume_obv">http://www.stockcharts.com/school/doku.php?id=chart_school:technical_indicators:on_balance_volume_obv</a><br />
+</p>
+
+
+<h3>See Also</h3>
+
+<p>See <code><a href="chaikinAD.html">chaikinAD</a></code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+data(ttrc)
+obv &lt;- OBV(ttrc[,"Close"], ttrc[,"Volume"])
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TTR</em> version 0.23-2 <a href="00Index.html">Index</a>]</div>
+</body></html>

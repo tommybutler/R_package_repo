@@ -1,0 +1,22 @@
+add_regressor           Add an additional regressor to be used for
+                        fitting and predicting.
+add_seasonality         Add a seasonal component with specified period,
+                        number of Fourier components, and prior scale.
+cross_validation        Cross-validation for time series.
+fit.prophet             Fit the prophet model.
+make_future_dataframe   Make dataframe with future dates for
+                        forecasting.
+plot.prophet            Plot the prophet forecast.
+plot_forecast_component
+                        Plot a particular component of the forecast.
+predict.prophet         Predict using the prophet model.
+predictive_samples      Sample from the posterior predictive
+                        distribution.
+prophet                 Prophet forecaster.
+prophet_plot_components
+                        Plot the components of a prophet forecast.
+                        Prints a ggplot2 with panels for trend, weekly
+                        and yearly seasonalities if present, and
+                        holidays if present.
+simulated_historical_forecasts
+                        Simulated historical forecasts.

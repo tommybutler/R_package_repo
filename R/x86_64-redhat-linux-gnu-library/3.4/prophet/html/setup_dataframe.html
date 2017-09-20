@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Prepare dataframe for fitting or predicting.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for setup_dataframe {prophet}"><tr><td>setup_dataframe {prophet}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Prepare dataframe for fitting or predicting.</h2>
+
+<h3>Description</h3>
+
+<p>Adds a time index and scales y. Creates auxillary columns 't', 't_ix',
+'y_scaled', and 'cap_scaled'. These columns are used during both fitting
+and predicting.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+setup_dataframe(m, df, initialize_scales = FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>m</code></td>
+<td>
+<p>Prophet object.</p>
+</td></tr>
+<tr valign="top"><td><code>df</code></td>
+<td>
+<p>Data frame with columns ds, y, and cap if logistic growth. Any
+specified additional regressors must also be present.</p>
+</td></tr>
+<tr valign="top"><td><code>initialize_scales</code></td>
+<td>
+<p>Boolean set scaling factors in m from df.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>list with items 'df' and 'm'.
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>prophet</em> version 0.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

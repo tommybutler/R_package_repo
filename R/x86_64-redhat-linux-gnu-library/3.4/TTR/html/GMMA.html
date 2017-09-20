@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Guppy Multiple Moving Averages</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for GMMA {TTR}"><tr><td>GMMA {TTR}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Guppy Multiple Moving Averages</h2>
+
+<h3>Description</h3>
+
+<p>Calculate the Guppy Multiple Moving Average of a series.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+GMMA(x, short = c(3, 5, 8, 10, 12, 15), long = c(30, 35, 40, 45, 50, 60),
+  maType)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>Price, volume, etc. series that is coercible to xts or matrix.</p>
+</td></tr>
+<tr valign="top"><td><code>short</code></td>
+<td>
+<p>Vector of short-term periods.</p>
+</td></tr>
+<tr valign="top"><td><code>long</code></td>
+<td>
+<p>Vector of long-term periods.</p>
+</td></tr>
+<tr valign="top"><td><code>maType</code></td>
+<td>
+<p>Either:
+</p>
+
+<ol>
+<li><p> A function or a string naming the function to be called.
+</p>
+</li>
+<li><p> A <em>list</em> with the first component like (1) above, and
+additional parameters specified as <em>named</em> components.
+See Examples.
+</p>
+</li></ol>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>The Guppy Multiple Moving Average signals a changing trend when the
+<code>short</code> and <code>long</code> groups of moving averages intersect.  An up/down
+trend exists when the short/long-term moving averages are greater than the
+long/short-term averages.
+</p>
+
+
+<h3>Value</h3>
+
+<p>A object of the same class as <code>x</code> or <code>price</code> or a vector
+(if <code>try.xts</code> fails) containing the Guppy Multiple Moving Average.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Joshua Ulrich
+</p>
+
+
+<h3>References</h3>
+
+<p>The following site(s) were used to code/document this
+indicator:<br />
+<a href="http://www.investopedia.com/terms/g/guppy-multiple-moving-average.asp">http://www.investopedia.com/terms/g/guppy-multiple-moving-average.asp</a><br />
+</p>
+
+
+<h3>See Also</h3>
+
+<p>See <code><a href="aroon.html">aroon</a></code>, <code><a href="CCI.html">CCI</a></code>, <code><a href="ADX.html">ADX</a></code>,
+<code><a href="VHF.html">VHF</a></code>, <code><a href="TDI.html">TDI</a></code> for other indicators that measure trend
+direction/strength.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+data(ttrc)
+gmma &lt;- GMMA(ttrc[,"Close"])
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TTR</em> version 0.23-2 <a href="00Index.html">Index</a>]</div>
+</body></html>

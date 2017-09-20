@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Money Flow Index</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for MFI {TTR}"><tr><td>MFI {TTR}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Money Flow Index</h2>
+
+<h3>Description</h3>
+
+<p>The MFI is a ratio of positive and negative money flow over time.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+MFI(HLC, volume, n = 14)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>HLC</code></td>
+<td>
+<p>Object that is coercible to xts or matrix and contains
+High-Low-Close prices.  If only a univariate series is given, it will be
+used.  See details.</p>
+</td></tr>
+<tr valign="top"><td><code>volume</code></td>
+<td>
+<p>Vector or matrix of volume observations corresponding to
+<code>HLC</code> object.</p>
+</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+<p>Number of periods to use.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Money Flow (MF) is the product of price and volume.  Positive/negative MF
+occur when today's price is higher/lower than yesterday's price.  The MFI is
+calculated by dividing positive MF by negative MF for the past <code>n</code>
+periods.  It is then scaled between 0 and 100.
+</p>
+<p>MFI is usually calculated using the typical price, but if a univariate series
+(e.g. Close, Weighted Close, Median Price, etc.) is provided, it will be used
+instead.
+</p>
+
+
+<h3>Value</h3>
+
+<p>A object of the same class as <code>HLC</code> and <code>volume</code> or a
+vector (if <code>try.xts</code> fails) containing the MFI values.
+</p>
+
+
+<h3>Note</h3>
+
+<p>Divergence between MFI and price can be indicative of a reversal.  In
+addition, values above/below 80/20 indicate market tops/bottoms.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Joshua Ulrich
+</p>
+
+
+<h3>References</h3>
+
+<p>The following site(s) were used to code/document this
+indicator:<br />
+<a href="http://www.fmlabs.com/reference/default.htm?url=MoneyFlowIndex.htm">http://www.fmlabs.com/reference/default.htm?url=MoneyFlowIndex.htm</a><br />
+<a href="https://www.linnsoft.com/techind/money-flow-index-mfi">https://www.linnsoft.com/techind/money-flow-index-mfi</a><br />
+<a href="http://stockcharts.com/school/doku.php?id=chart_school:technical_indicators:money_flow_index_mfi">http://stockcharts.com/school/doku.php?id=chart_school:technical_indicators:money_flow_index_mfi</a><br />
+</p>
+
+
+<h3>See Also</h3>
+
+<p>See <code><a href="OBV.html">OBV</a></code> and <code><a href="CMF.html">CMF</a></code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+data(ttrc)
+mfi &lt;- MFI(ttrc[,c("High","Low","Close")], ttrc[,"Volume"])
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TTR</em> version 0.23-2 <a href="00Index.html">Index</a>]</div>
+</body></html>

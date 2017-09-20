@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Analysis of Running/Rolling/Moving Windows</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for rollSFM {TTR}"><tr><td>rollSFM {TTR}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Analysis of Running/Rolling/Moving Windows</h2>
+
+<h3>Description</h3>
+
+<p>Various functions to analyze data over a moving window of periods.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+rollSFM(Ra, Rb, n = 60)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>Ra</code></td>
+<td>
+<p>Object coercible to xts or matrix, containing the excess
+return for an individual security</p>
+</td></tr>
+<tr valign="top"><td><code>Rb</code></td>
+<td>
+<p>Object coercible to xts or matrix, containing the market
+/ benchmark return</p>
+</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+<p>Number of periods to use in the window</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A object of the same class as <code>Ra</code> (and <code>Rb</code>?) or a vector
+(if <code>try.xts</code> fails).
+</p>
+
+<dl>
+<dt>rollSFM</dt><dd><p>returns single-factor model parameters and R-squared
+over a n-period moving window.</p>
+</dd>
+</dl>
+
+
+
+<h3>Author(s)</h3>
+
+<p>Joshua Ulrich
+</p>
+
+
+<h3>References</h3>
+
+<p>The following site(s) were used to code/document this
+indicator:
+<a href="http://en.wikipedia.org/wiki/Simple_linear_regression">http://en.wikipedia.org/wiki/Simple_linear_regression</a><br />
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>TTR</em> version 0.23-2 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Simulate a GARCH process</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for garch.sim {TSA}"><tr><td>garch.sim {TSA}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Simulate a GARCH process</h2>
+
+<h3>Description</h3>
+
+<p>Simulate a GARCH process.</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+garch.sim(alpha, beta, n = 100, rnd = rnorm, ntrans = 100,...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>alpha</code></td>
+<td>
+<p>The vector of  ARCH coefficients including the intercept term as the 
+first element</p>
+</td></tr>
+<tr valign="top"><td><code>beta</code></td>
+<td>
+<p>The vector of GARCH coefficients</p>
+</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+<p>sample size</p>
+</td></tr>
+<tr valign="top"><td><code>rnd</code></td>
+<td>
+<p>random number generator for the noise; default is normal</p>
+</td></tr>
+<tr valign="top"><td><code>ntrans</code></td>
+<td>
+<p>burn-in size, i.e. number of initial simulated data to be discarded</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>parameters to be passed to the random number generator</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Simulate data from the GARCH(p,q) model:
+<i>x_t=&sigma;_{t|t-1} e_t</i> where <i>\{e_t\}</i> is iid,  <i>e_t</i> 
+independent of past <i>x_{t-s}, s=1,2,&hellip;</i>, and
+</p>
+<p style="text-align: center;"><i>&sigma;_{t|t-1}=&sum;_{j=1}^p &beta;_j &sigma;_{t-j|t-j-1}+
+&alpha;_0+&sum;_{j=1}^q &alpha;_j x_{t-i}^2</i></p>
+
+
+
+<h3>Value</h3>
+
+<p>simulated GARCH time series of size n.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Kung-Sik Chan</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+set.seed(1235678)
+garch01.sim=garch.sim(alpha=c(.01,.9),n=500)
+plot(garch01.sim,type='l', main='',ylab=expression(r[t]),xlab='t')
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TSA</em> version 1.01 <a href="00Index.html">Index</a>]</div>
+</body></html>

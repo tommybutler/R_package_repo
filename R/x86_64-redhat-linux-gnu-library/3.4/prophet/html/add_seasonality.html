@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Add a seasonal component with specified period, number of...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for add_seasonality {prophet}"><tr><td>add_seasonality {prophet}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Add a seasonal component with specified period, number of Fourier
+components, and prior scale.</h2>
+
+<h3>Description</h3>
+
+<p>Increasing the number of Fourier components allows the seasonality to change
+more quickly (at risk of overfitting). Default values for yearly and weekly
+seasonalities are 10 and 3 respectively.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+add_seasonality(m, name, period, fourier.order, prior.scale = NULL)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>m</code></td>
+<td>
+<p>Prophet object.</p>
+</td></tr>
+<tr valign="top"><td><code>name</code></td>
+<td>
+<p>String name of the seasonality component.</p>
+</td></tr>
+<tr valign="top"><td><code>period</code></td>
+<td>
+<p>Float number of days in one period.</p>
+</td></tr>
+<tr valign="top"><td><code>fourier.order</code></td>
+<td>
+<p>Int number of Fourier components to use.</p>
+</td></tr>
+<tr valign="top"><td><code>prior.scale</code></td>
+<td>
+<p>Float prior scale for this component.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Increasing prior scale will allow this seasonality component more
+flexibility, decreasing will dampen it. If not provided, will use the
+seasonality.prior.scale provided on Prophet initialization (defaults to 10).
+</p>
+
+
+<h3>Value</h3>
+
+<p>The prophet model with the seasonality added.
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>prophet</em> version 0.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

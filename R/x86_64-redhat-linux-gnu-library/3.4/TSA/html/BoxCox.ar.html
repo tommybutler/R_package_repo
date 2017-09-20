@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Determine the power transformation for serially correlated...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for BoxCox.ar {TSA}"><tr><td>BoxCox.ar {TSA}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Determine the power transformation for serially correlated data</h2>
+
+<h3>Description</h3>
+
+<p>Determine the appropriate 
+power transformation for time-series data. The objective is
+to estimate the power transformation so that the transformed time series is
+approximately a Gaussian AR process.</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+BoxCox.ar(y, order, lambda = seq(-2, 2, 0.01), plotit = TRUE, 
+method = c("mle", "yule-walker", "burg", "ols", "yw"), ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>y</code></td>
+<td>
+<p> univariate time series (must be positive)</p>
+</td></tr>
+<tr valign="top"><td><code>order</code></td>
+<td>
+<p> AR order for the data; if missing, the order is determined by
+AIC for the log-transformed data</p>
+</td></tr>
+<tr valign="top"><td><code>lambda</code></td>
+<td>
+<p> a vector of candidate power transformation values; if missing, it is
+set to be from -2 to 2, with increment .01</p>
+</td></tr>
+<tr valign="top"><td><code>plotit</code></td>
+<td>
+<p> logical value, if true, plot the profile
+log-likelihood for  
+the power estimator</p>
+</td></tr>
+<tr valign="top"><td><code>method</code></td>
+<td>
+<p> method of AR estimation; default is &quot;mle&quot;</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p> other parameters to be passed to the ar function</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A list that contains the following:
+</p>
+<table summary="R valueblock">
+<tr valign="top"><td><code>lambda</code></td>
+<td>
+<p>candidate power transformation parameter values</p>
+</td></tr>
+<tr valign="top"><td><code>loglike</code></td>
+<td>
+<p>profile log-likelihood</p>
+</td></tr>
+<tr valign="top"><td><code>mle</code></td>
+<td>
+<p>maximum likelihood estimate of the power transformation
+value</p>
+</td></tr>
+<tr valign="top"><td><code>ci</code></td>
+<td>
+<p>95% C.I. of the power transformation value</p>
+</td></tr> </table>
+
+
+<h3>Note</h3>
+
+<p> The procedure is very computer intensive. Be patient for the outcome</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Kung-Sik Chan</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(hare)
+# hare.transf=BoxCox.ar(y=hare)
+# hare.transf$ci
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TSA</em> version 1.01 <a href="00Index.html">Index</a>]</div>
+</body></html>

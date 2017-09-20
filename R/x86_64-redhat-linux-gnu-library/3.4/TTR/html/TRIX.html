@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Triple Smoothed Exponential Oscillator</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for TRIX {TTR}"><tr><td>TRIX {TTR}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Triple Smoothed Exponential Oscillator</h2>
+
+<h3>Description</h3>
+
+<p>The TRIX indicator calculates the rate of change of a triple exponential
+moving average.  Developed by Jack K. Hutson.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+TRIX(price, n = 20, nSig = 9, maType, percent = TRUE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>price</code></td>
+<td>
+<p>Price series that is coercible to xts or matrix.</p>
+</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+<p>Number of periods for moving average.</p>
+</td></tr>
+<tr valign="top"><td><code>nSig</code></td>
+<td>
+<p>Number of periods for signal line moving average.</p>
+</td></tr>
+<tr valign="top"><td><code>maType</code></td>
+<td>
+<p>Either:
+</p>
+
+<ol>
+<li><p> A function or a string naming the function to be called.
+</p>
+</li>
+<li><p> A <em>list</em> with the first component like (1) above, and
+additional parameters specified as <em>named</em> components.
+See Examples.
+</p>
+</li></ol>
+</td></tr>
+<tr valign="top"><td><code>percent</code></td>
+<td>
+<p>logical; if <code>TRUE</code>, the rate of change is calculated
+using the <code>ROC</code> function, otherwise the <code>momentum</code> function is
+used.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Other arguments to be passed to the <code>maType</code> function in
+case (1) above.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>The TRIX is calculated as follows:<br /> 3MA = <code>MA</code>( <code>MA</code>(
+<code>MA</code>(<code>price</code>) ) )<br /> trix = 100 * [ 3MA(t) / 3MA(t-1) - 1 ]
+</p>
+
+
+<h3>Value</h3>
+
+<p>A object of the same class as <code>price</code> or a vector (if
+<code>try.xts</code> fails) containing the TRIX values.
+</p>
+
+
+<h3>Note</h3>
+
+<p>Buy/sell signals are generated when the TRIX crosses above/below zero.
+A nine-period EMA of the TRIX is used as a default signal line.  Buy/sell
+signals are generated when the TRIX crosses above/below the signal line and
+is also above/below zero.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Joshua Ulrich
+</p>
+
+
+<h3>References</h3>
+
+<p>The following site(s) were used to code/document this
+indicator:<br />
+<a href="http://www.fmlabs.com/reference/default.htm?url=TRIX.htm">http://www.fmlabs.com/reference/default.htm?url=TRIX.htm</a><br />
+<a href="https://www.metastock.com/Customer/Resources/TAAZ/?p=114">https://www.metastock.com/Customer/Resources/TAAZ/?p=114</a><br />
+<a href="https://www.linnsoft.com/techind/trix-triple-smoothed-exponential-oscillator">https://www.linnsoft.com/techind/trix-triple-smoothed-exponential-oscillator</a><br />
+<a href="http://www.stockcharts.com/school/doku.php?id=chart_school:technical_indicators:trix">http://www.stockcharts.com/school/doku.php?id=chart_school:technical_indicators:trix</a><br />
+</p>
+
+
+<h3>See Also</h3>
+
+<p>See <code><a href="MovingAverages.html">EMA</a></code>, <code><a href="MovingAverages.html">SMA</a></code>, etc. for moving average
+options; and note Warning section.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+data(ttrc)
+trix  &lt;- TRIX(ttrc[,"Close"])
+trix4 &lt;- TRIX(ttrc[,"Close"],
+maType=list(list(SMA), list(EMA, wilder=TRUE), list(SMA), list(DEMA)))
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TTR</em> version 0.23-2 <a href="00Index.html">Index</a>]</div>
+</body></html>

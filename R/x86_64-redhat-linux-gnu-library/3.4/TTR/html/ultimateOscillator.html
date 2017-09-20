@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: The Ultimate Oscillator</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for ultimateOscillator {TTR}"><tr><td>ultimateOscillator {TTR}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>The Ultimate Oscillator</h2>
+
+<h3>Description</h3>
+
+<p>The Ultimate Oscillator is a momentum oscillator designed to capture momentum across three
+different time frames.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ultimateOscillator(HLC, n = c(7, 14, 28), wts = c(4, 2, 1))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>HLC</code></td>
+<td>
+<p>Object that is coercible to xts or matrix and contains
+High-Low-Close prices.</p>
+</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+<p>A vector of the number of periods to use for each average calculation.</p>
+</td></tr>
+<tr valign="top"><td><code>wts</code></td>
+<td>
+<p>The weights applied to each average.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Created by Larry Williams in 1976.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Ivan Popivanov
+</p>
+
+
+<h3>References</h3>
+
+<p>The following site(s) were used to code/document this
+indicator:<br />
+<a href="http://stockcharts.com/school/doku.php?id=chart_school:technical_indicators:ultimate_oscillator">http://stockcharts.com/school/doku.php?id=chart_school:technical_indicators:ultimate_oscillator</a><br />
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+data(ttrc)
+ult.osc &lt;- ultimateOscillator(ttrc[,c("High","Low","Close")])
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TTR</em> version 0.23-2 <a href="00Index.html">Index</a>]</div>
+</body></html>

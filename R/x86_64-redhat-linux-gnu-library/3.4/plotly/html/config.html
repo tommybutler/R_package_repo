@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Set the default configuration for plotly</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for config {plotly}"><tr><td>config {plotly}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Set the default configuration for plotly</h2>
+
+<h3>Description</h3>
+
+<p>Set the default configuration for plotly
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+config(p, ..., collaborate = TRUE, cloud = FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>p</code></td>
+<td>
+<p>a plotly object</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>these arguments are documented at
+<a href="https://github.com/plotly/plotly.js/blob/master/src/plot_api/plot_config.js">https://github.com/plotly/plotly.js/blob/master/src/plot_api/plot_config.js</a></p>
+</td></tr>
+<tr valign="top"><td><code>collaborate</code></td>
+<td>
+<p>include the collaborate mode bar button (unique to the R pkg)?</p>
+</td></tr>
+<tr valign="top"><td><code>cloud</code></td>
+<td>
+<p>include the send data to cloud button?</p>
+</td></tr>
+</table>
+
+
+<h3>Author(s)</h3>
+
+<p>Carson Sievert
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+config(plot_ly(), displaylogo = FALSE, collaborate = FALSE)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>plotly</em> version 4.7.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

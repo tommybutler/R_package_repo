@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Split and dividend adjustment ratios</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for adjRatios {TTR}"><tr><td>adjRatios {TTR}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Split and dividend adjustment ratios</h2>
+
+<h3>Description</h3>
+
+<p>Create split and dividend adjustment ratio vectors.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+adjRatios(splits, dividends, close)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>splits</code></td>
+<td>
+<p>Split series that is coercible to xts.</p>
+</td></tr>
+<tr valign="top"><td><code>dividends</code></td>
+<td>
+<p>Dividend series that is coercible to xts.</p>
+</td></tr>
+<tr valign="top"><td><code>close</code></td>
+<td>
+<p>Close price series that is coercible to xts.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+
+<ul>
+<li><p> If only <code>splits</code> is provided, the resulting object will
+only have as many observations as <code>splits</code>.
+</p>
+</li>
+<li><p> If <code>splits</code> and <code>close</code> are provided, the resulting
+object will have as many observations as <code>max(NROW(splits),
+    NROW(close))</code>.
+</p>
+</li>
+<li> <p><code>close</code> is required if <code>dividends</code> is provided.
+</p>
+</li></ul>
+
+
+
+<h3>Value</h3>
+
+<p>A xts object containing the columns:
+</p>
+
+<dl>
+<dt> Split </dt><dd><p> The split adjustment ratio. </p>
+</dd>
+<dt> Div </dt><dd><p> The dividend adjustment ratio. </p>
+</dd>
+</dl>
+
+
+
+<h3>Author(s)</h3>
+
+<p>Joshua Ulrich
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>TTR</em> version 0.23-2 <a href="00Index.html">Index</a>]</div>
+</body></html>

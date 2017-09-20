@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Trend Detection Index</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for TDI {TTR}"><tr><td>TDI {TTR}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Trend Detection Index</h2>
+
+<h3>Description</h3>
+
+<p>The Trend Detection Index (TDI) attempts to identify starting and ending
+trends.  Developed by M. H. Pee.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+TDI(price, n = 20, multiple = 2)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>price</code></td>
+<td>
+<p>Price series that is coercible to xts or matrix.</p>
+</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+<p>Number of periods to use.</p>
+</td></tr>
+<tr valign="top"><td><code>multiple</code></td>
+<td>
+<p>Multiple used to calculate (2).</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>The TDI is the (1) absolute value of the <code>n</code>-day sum of the <code>n</code>-day
+momentum, minus the quantity of (2) <code>multiple</code>*<code>n</code>-day sum of the
+absolute value of the <code>n</code>-day momentum, minus (3) <code>n</code>-day sum of
+the absolute value of the <code>n</code>-day momentum.
+</p>
+<p>I.e. TDI = (1) - [ (2) - (3) ]
+</p>
+<p>The direction indicator is the sum of the <code>n</code>-day momentum over the last
+<code>n</code> days.
+</p>
+<p>See URL in references section for further details.
+</p>
+
+
+<h3>Value</h3>
+
+<p>A object of the same class as <code>price</code> or a matrix (if
+<code>try.xts</code> fails) containing the columns:
+</p>
+
+<dl>
+<dt> tdi </dt><dd><p> The Trend Detection Index. </p>
+</dd>
+<dt> di </dt><dd><p> The Direction Indicator. </p>
+</dd>
+</dl>
+
+
+
+<h3>Note</h3>
+
+<p>Positive/negative TDI values signal a trend/consolidation.  A positive/
+negative direction indicator signals a up/down trend.  I.e. buy if the TDI
+and the direction indicator are positive, and sell if the TDI is positive
+while the direction indicator is negative.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Joshua Ulrich
+</p>
+
+
+<h3>References</h3>
+
+<p>The following site(s) were used to code/document this
+indicator:<br />
+<a href="https://www.linnsoft.com/techind/trend-detection-index-tdi">https://www.linnsoft.com/techind/trend-detection-index-tdi</a><br />
+</p>
+
+
+<h3>See Also</h3>
+
+<p>See <code><a href="aroon.html">aroon</a></code>, <code><a href="CCI.html">CCI</a></code>, <code><a href="ADX.html">ADX</a></code>,
+<code><a href="VHF.html">VHF</a></code>, <code><a href="GMMA.html">GMMA</a></code> for other indicators that measure trend
+direction/strength.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+data(ttrc)
+tdi &lt;- TDI(ttrc[,"Close"], n=30)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TTR</em> version 0.23-2 <a href="00Index.html">Index</a>]</div>
+</body></html>

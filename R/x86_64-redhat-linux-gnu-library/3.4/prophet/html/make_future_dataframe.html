@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Make dataframe with future dates for forecasting.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for make_future_dataframe {prophet}"><tr><td>make_future_dataframe {prophet}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Make dataframe with future dates for forecasting.</h2>
+
+<h3>Description</h3>
+
+<p>Make dataframe with future dates for forecasting.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+make_future_dataframe(m, periods, freq = "day", include_history = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>m</code></td>
+<td>
+<p>Prophet model object.</p>
+</td></tr>
+<tr valign="top"><td><code>periods</code></td>
+<td>
+<p>Int number of periods to forecast forward.</p>
+</td></tr>
+<tr valign="top"><td><code>freq</code></td>
+<td>
+<p>'day', 'week', 'month', 'quarter', 'year', 1(1 sec), 60(1 minute) or 3600(1 hour).</p>
+</td></tr>
+<tr valign="top"><td><code>include_history</code></td>
+<td>
+<p>Boolean to include the historical dates in the data
+frame for predictions.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>Dataframe that extends forward from the end of m$history for the
+requested number of periods.
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>prophet</em> version 0.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

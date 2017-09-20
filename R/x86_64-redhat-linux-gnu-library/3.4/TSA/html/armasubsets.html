@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Selection of Subset ARMA Models</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for armasubsets {TSA}"><tr><td>armasubsets {TSA}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Selection of Subset ARMA Models</h2>
+
+<h3>Description</h3>
+
+<p>This function finds a number of subset ARMA models.
+A &quot;long&quot; AR model is fitted to the data y to compute the residuals
+which are taken as a proxy of the error process.
+Then, an ARMA model is approximated by a regression model with the 
+the covariates being the lags of the time series and the lags of the
+error process.
+Subset ARMA models may then be selected using the subset regression 
+technique by leaps and bounds, via the regsubsets function of the leaps
+package in R.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+armasubsets(y, nar, nma, y.name = "Y", ar.method = "ols", ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+ <table summary="R argblock">
+<tr valign="top"><td><code>y</code></td>
+<td>
+<p>time-series data</p>
+</td></tr>
+<tr valign="top"><td><code>nar</code></td>
+<td>
+<p>maximum AR order</p>
+</td></tr>
+<tr valign="top"><td><code>nma</code></td>
+<td>
+<p>maximum MA order</p>
+</td></tr>
+<tr valign="top"><td><code>y.name</code></td>
+<td>
+<p>label of the time series</p>
+</td></tr>
+<tr valign="top"><td><code>ar.method</code></td>
+<td>
+<p>method used for fitting the long AR model; default is ols
+with the AR order determined by AIC</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>arguments passed to the plot.armasubsets function</p>
+</td></tr> </table>
+
+
+<h3>Value</h3>
+
+<p>An object of the armasubsets class to be processed by the plot.armasubsets
+function.</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Kung-Sik Chan</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+set.seed(92397)
+test=arima.sim(model=list(ar=c(rep(0,11),.8),ma=c(rep(0,11),0.7)),n=120)
+res=armasubsets(y=test,nar=14,nma=14,y.name='test',ar.method='ols')
+plot(res)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TSA</em> version 1.01 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Fitted values of an arima model.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for fitted.Arima {TSA}"><tr><td>fitted.Arima {TSA}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Fitted values of an arima model.</h2>
+
+<h3>Description</h3>
+
+<p>Computes the fitted values of an arima model.</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S3 method for class 'Arima'
+fitted(object,...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+<p>a fitted model from the arima function.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>other arguments; not used here but kept to be consistent with the 
+generic method</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>fitted values</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Kung-Sik Chan</p>
+
+
+<h3>See Also</h3>
+
+ <p><code><a href="arima.html">arima</a></code></p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(hare)
+hare.m1=arima(sqrt(hare),order=c(3,0,0))
+fitted(hare.m1)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TSA</em> version 1.01 <a href="00Index.html">Index</a>]</div>
+</body></html>

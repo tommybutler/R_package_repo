@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Initiate a plotly visualization</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for plot_ly {plotly}"><tr><td>plot_ly {plotly}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Initiate a plotly visualization</h2>
+
+<h3>Description</h3>
+
+<p>Transform data into a plotly visualization.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+plot_ly(data = data.frame(), ..., type = NULL, color, colors = NULL,
+  alpha = 1, symbol, symbols = NULL, size, sizes = c(10, 100), linetype,
+  linetypes = NULL, split, frame, width = NULL, height = NULL,
+  source = "A")
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>data</code></td>
+<td>
+<p>A data frame (optional) or <a href="../../crosstalk/html/SharedData.html">crosstalk::SharedData</a> object.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>These arguments are documented at <a href="https://plot.ly/r/reference/">https://plot.ly/r/reference/</a>
+Note that acceptable arguments depend on the value of <code>type</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+<p>A character string describing the type of trace.</p>
+</td></tr>
+<tr valign="top"><td><code>color</code></td>
+<td>
+<p>A formula containing a name or expression.
+Values are scaled and mapped to color codes based on the value of
+<code>colors</code> and <code>alpha</code>. To avoid scaling, wrap with <code><a href="../../base/html/AsIs.html">I()</a></code>,
+and provide value(s) that can be converted to rgb color codes by
+<code><a href="../../grDevices/html/col2rgb.html">grDevices::col2rgb()</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>colors</code></td>
+<td>
+<p>Either a colorbrewer2.org palette name (e.g. &quot;YlOrRd&quot; or &quot;Blues&quot;),
+or a vector of colors to interpolate in hexadecimal &quot;#RRGGBB&quot; format,
+or a color interpolation function like <code>colorRamp()</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>alpha</code></td>
+<td>
+<p>A number between 0 and 1 specifying the alpha channel applied to color.</p>
+</td></tr>
+<tr valign="top"><td><code>symbol</code></td>
+<td>
+<p>A formula containing a name or expression.
+Values are scaled and mapped to symbols based on the value of <code>symbols</code>.
+To avoid scaling, wrap with <code><a href="../../base/html/AsIs.html">I()</a></code>, and provide valid
+<code><a href="../../graphics/html/points.html">pch()</a></code> values and/or valid plotly symbol(s) as a string</p>
+</td></tr>
+<tr valign="top"><td><code>symbols</code></td>
+<td>
+<p>A character vector of symbol types.
+Either valid <a href="../../graphics/html/points.html">pch</a> or plotly symbol codes may be supplied.</p>
+</td></tr>
+<tr valign="top"><td><code>size</code></td>
+<td>
+<p>A formula containing a name or expression yielding a numeric vector.
+Values are scaled according to the range specified in <code>sizes</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>sizes</code></td>
+<td>
+<p>A numeric vector of length 2 used to scale sizes to pixels.</p>
+</td></tr>
+<tr valign="top"><td><code>linetype</code></td>
+<td>
+<p>A formula containing a name or expression.
+Values are scaled and mapped to linetypes based on the value of
+<code>linetypes</code>. To avoid scaling, wrap with <code><a href="../../base/html/AsIs.html">I()</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>linetypes</code></td>
+<td>
+<p>A character vector of line types.
+Either valid <a href="../../graphics/html/par.html">par</a> (lty) or plotly dash codes may be supplied.</p>
+</td></tr>
+<tr valign="top"><td><code>split</code></td>
+<td>
+<p>A formula containing a name or expression. Similar to
+<code><a href="reexports.html">group_by()</a></code>, but ensures at least one trace for each unique
+value. This replaces the functionality of the (now deprecated)
+<code>group</code> argument.</p>
+</td></tr>
+<tr valign="top"><td><code>frame</code></td>
+<td>
+<p>A formula containing a name or expression. The resulting value
+is used to split data into frames, and then animated.</p>
+</td></tr>
+<tr valign="top"><td><code>width</code></td>
+<td>
+<p>Width in pixels (optional, defaults to automatic sizing).</p>
+</td></tr>
+<tr valign="top"><td><code>height</code></td>
+<td>
+<p>Height in pixels (optional, defaults to automatic sizing).</p>
+</td></tr>
+<tr valign="top"><td><code>source</code></td>
+<td>
+<p>a character string of length 1. Match the value of this string
+with the source argument in <code><a href="event_data.html">event_data()</a></code> to retrieve the
+event data corresponding to a specific plot (shiny apps can have multiple plots).</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>There are a number of &quot;visual properties&quot; that aren't included in the official
+Reference section (see below).
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Carson Sievert
+</p>
+
+
+<h3>See Also</h3>
+
+
+<ul>
+<li><p> For initializing a plotly-geo object: <code><a href="plot_geo.html">plot_geo()</a></code>.
+</p>
+</li>
+<li><p> For initializing a plotly-mapbox object: <code><a href="plot_mapbox.html">plot_mapbox()</a></code>.
+</p>
+</li>
+<li><p> For translating a ggplot2 object to a plotly object: <code><a href="ggplotly.html">ggplotly()</a></code>.
+</p>
+</li>
+<li><p> For modifying any plotly object: <code><a href="layout.html">layout()</a></code>, <code><a href="add_trace.html">add_trace()</a></code>, <code><a href="style.html">style()</a></code>
+</p>
+</li>
+<li>
+</li></ul>
+
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: 
+
+# plot_ly() tries to create a sensible plot based on the information you 
+# give it. If you don't provide a trace type, plot_ly() will infer one.
+plot_ly(economics, x = ~pop)
+plot_ly(economics, x = ~date, y = ~pop)
+# plot_ly() doesn't require data frame(s), which allows one to take 
+# advantage of trace type(s) designed specifically for numeric matrices
+plot_ly(z = ~volcano)
+plot_ly(z = ~volcano, type = "surface")
+
+# plotly has a functional interface: every plotly function takes a plotly
+# object as it's first input argument and returns a modified plotly object
+add_lines(plot_ly(economics, x = ~date, y = ~unemploy/pop))
+
+# To make code more readable, plotly imports the pipe operator from magrittr
+economics %&gt;% plot_ly(x = ~date, y = ~unemploy/pop) %&gt;% add_lines()
+
+# Attributes defined via plot_ly() set 'global' attributes that 
+# are carried onto subsequent traces, but those may be over-written
+plot_ly(economics, x = ~date, color = I("black")) %&gt;%
+ add_lines(y = ~uempmed) %&gt;%
+ add_lines(y = ~psavert, color = I("red"))
+
+# Attributes are documented in the figure reference -&gt; https://plot.ly/r/reference
+# You might notice plot_ly() has named arguments that aren't in this figure
+# reference. These arguments make it easier to map abstract data values to
+# visual attributes.
+p &lt;- plot_ly(iris, x = ~Sepal.Width, y = ~Sepal.Length) 
+add_markers(p, color = ~Petal.Length, size = ~Petal.Length)
+add_markers(p, color = ~Species)
+add_markers(p, color = ~Species, colors = "Set1")
+add_markers(p, symbol = ~Species)
+add_paths(p, linetype = ~Species)
+
+
+## End(Not run)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>plotly</em> version 4.7.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

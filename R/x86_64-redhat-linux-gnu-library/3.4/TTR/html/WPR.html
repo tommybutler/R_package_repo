@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: William's %R</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for WPR {TTR}"><tr><td>WPR {TTR}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>William's %R</h2>
+
+<h3>Description</h3>
+
+<p>William's % R.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+WPR(HLC, n = 14)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>HLC</code></td>
+<td>
+<p>Object that is coercible to xts or matrix and contains
+High-Low-Close prices.  If only a univariate series is given, it will be
+used.  See details.</p>
+</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+<p>Number of periods to use.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>If an High-Low-Close series is provided, the indicator is calculated using
+the high/low values.  If a vector is provided, the calculation only uses that
+series.
+</p>
+
+
+<h3>Value</h3>
+
+<p>A object of the same class as <code>HLC</code> or a vector (if
+<code>try.xts</code> fails) containing the William's %R values.
+</p>
+
+
+<h3>Note</h3>
+
+<p>The William's %R calculation is similar to stochastics' fast %K.
+</p>
+<p>The value for William's %R will be 0.5 whenever the highest high and
+lowest low are the same over the last <code>n</code> periods.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Joshua Ulrich
+</p>
+
+
+<h3>References</h3>
+
+<p>The following site(s) were used to code/document this
+indicator:<br />
+<a href="http://www.fmlabs.com/reference/WilliamsR.htm">http://www.fmlabs.com/reference/WilliamsR.htm</a><br />
+<a href="http://www.metastock.com/Customer/Resources/TAAZ/#126">http://www.metastock.com/Customer/Resources/TAAZ/#126</a><br />
+<a href="https://www.linnsoft.com/techind/williams-r-wpr">https://www.linnsoft.com/techind/williams-r-wpr</a><br />
+<a href="http://www.stockcharts.com/school/doku.php?id=chart_school:technical_indicators:williams_r">http://www.stockcharts.com/school/doku.php?id=chart_school:technical_indicators:williams_r</a><br />
+</p>
+
+
+<h3>See Also</h3>
+
+<p>See <code><a href="stochastics.html">stoch</a></code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+data(ttrc)
+stochOsc &lt;- stoch(ttrc[,c("High","Low","Close")])
+stochWPR&lt;- WPR(ttrc[,c("High","Low","Close")])
+
+plot(tail(stochOsc[,"fastK"], 100), type="l",
+    main="Fast %K and Williams %R", ylab="",
+    ylim=range(cbind(stochOsc, stochWPR), na.rm=TRUE) )
+lines(tail(stochWPR, 100), col="blue")
+lines(tail(1-stochWPR, 100), col="red", lty="dashed")
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TTR</em> version 0.23-2 <a href="00Index.html">Index</a>]</div>
+</body></html>

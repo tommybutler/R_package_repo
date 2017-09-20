@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Plot the prophet forecast.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for plot.prophet {prophet}"><tr><td>plot.prophet {prophet}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Plot the prophet forecast.</h2>
+
+<h3>Description</h3>
+
+<p>Plot the prophet forecast.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S3 method for class 'prophet'
+plot(x, fcst, uncertainty = TRUE, plot_cap = TRUE,
+  xlabel = "ds", ylabel = "y", ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>Prophet object.</p>
+</td></tr>
+<tr valign="top"><td><code>fcst</code></td>
+<td>
+<p>Data frame returned by predict(m, df).</p>
+</td></tr>
+<tr valign="top"><td><code>uncertainty</code></td>
+<td>
+<p>Boolean indicating if the uncertainty interval for yhat
+should be plotted. Must be present in fcst as yhat_lower and yhat_upper.</p>
+</td></tr>
+<tr valign="top"><td><code>plot_cap</code></td>
+<td>
+<p>Boolean indicating if the capacity should be shown in the
+figure, if available.</p>
+</td></tr>
+<tr valign="top"><td><code>xlabel</code></td>
+<td>
+<p>Optional label for x-axis</p>
+</td></tr>
+<tr valign="top"><td><code>ylabel</code></td>
+<td>
+<p>Optional label for y-axis</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>additional arguments</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A ggplot2 plot.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: 
+history &lt;- data.frame(ds = seq(as.Date('2015-01-01'), as.Date('2016-01-01'), by = 'd'),
+                      y = sin(1:366/200) + rnorm(366)/10)
+m &lt;- prophet(history)
+future &lt;- make_future_dataframe(m, periods = 365)
+forecast &lt;- predict(m, future)
+plot(m, forecast)
+
+## End(Not run)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>prophet</em> version 0.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

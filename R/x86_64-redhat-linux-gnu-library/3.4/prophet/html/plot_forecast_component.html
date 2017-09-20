@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Plot a particular component of the forecast.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for plot_forecast_component {prophet}"><tr><td>plot_forecast_component {prophet}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Plot a particular component of the forecast.</h2>
+
+<h3>Description</h3>
+
+<p>Plot a particular component of the forecast.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+plot_forecast_component(fcst, name, uncertainty = TRUE, plot_cap = FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>fcst</code></td>
+<td>
+<p>Dataframe output of 'predict'.</p>
+</td></tr>
+<tr valign="top"><td><code>name</code></td>
+<td>
+<p>String name of the component to plot (column of fcst).</p>
+</td></tr>
+<tr valign="top"><td><code>uncertainty</code></td>
+<td>
+<p>Boolean to plot uncertainty intervals.</p>
+</td></tr>
+<tr valign="top"><td><code>plot_cap</code></td>
+<td>
+<p>Boolean indicating if the capacity should be shown in the
+figure, if available.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A ggplot2 plot.
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>prophet</em> version 0.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

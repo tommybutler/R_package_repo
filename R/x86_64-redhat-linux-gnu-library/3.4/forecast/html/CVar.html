@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: k-fold Cross-Validation applied to an autoregressive model</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for CVar {forecast}"><tr><td>CVar {forecast}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>k-fold Cross-Validation applied to an autoregressive model</h2>
+
+<h3>Description</h3>
+
+<p><code>CVar</code> computes the errors obtained by applying an autoregressive
+modelling function to subsets of the time series <code>y</code> using k-fold
+cross-validation as described in Bergmeir, Hyndman and Koo (2015).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+CVar(y, k = 10, FUN = nnetar, cvtrace = FALSE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>y</code></td>
+<td>
+<p>Univariate time series</p>
+</td></tr>
+<tr valign="top"><td><code>k</code></td>
+<td>
+<p>Number of folds to use for cross-validation.</p>
+</td></tr>
+<tr valign="top"><td><code>FUN</code></td>
+<td>
+<p>Function to fit an autoregressive model. Currently, it only works
+with the <code><a href="nnetar.html">nnetar</a></code> function.</p>
+</td></tr>
+<tr valign="top"><td><code>cvtrace</code></td>
+<td>
+<p>Provide progress information.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Other arguments are passed to <code>FUN</code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A list containing information about the model and accuracy for each
+fold, plus other summary information computed across folds.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Gabriel Caceres and Rob J Hyndman
+</p>
+
+
+<h3>References</h3>
+
+<p>Bergmeir, C., Hyndman, R.J., Koo, B. (2015) A note on the
+validity of cross-validation for evaluating time series prediction. Monash
+working paper 10/15.
+<a href="https://robjhyndman.com/publications/cv-time-series/">https://robjhyndman.com/publications/cv-time-series/</a>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><a href="CV.html">CV</a>, <a href="tsCV.html">tsCV</a>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+modelcv &lt;- CVar(lynx, k=5, lambda=0.15)
+print(modelcv)
+print(modelcv$fold1)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>forecast</em> version 8.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

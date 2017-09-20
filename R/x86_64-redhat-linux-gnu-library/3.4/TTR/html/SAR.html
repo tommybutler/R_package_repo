@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Parabolic Stop-and-Reverse</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for SAR {TTR}"><tr><td>SAR {TTR}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Parabolic Stop-and-Reverse</h2>
+
+<h3>Description</h3>
+
+<p>The Parabolic Stop-and-Reverse calculates a trailing stop.  Developed by J.
+Welles Wilder.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+SAR(HL, accel = c(0.02, 0.2))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>HL</code></td>
+<td>
+<p>Object that is coercible to xts or matrix and contains High-Low
+prices.</p>
+</td></tr>
+<tr valign="top"><td><code>accel</code></td>
+<td>
+<p>accel[1]: Acceleration factor.<br /> accel[2]: Maximum acceleration
+factor.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>The calculation for the SAR is quite complex.  See the URLs in the references
+section for calculation notes.
+</p>
+<p>The SAR assumes that you are always in the market, and calculates the Stop
+And Reverse point when you would close a long position and open a short
+position or vice versa.
+</p>
+
+
+<h3>Value</h3>
+
+<p>A object of the same class as <code>HL</code> or a vector (if
+<code>try.xts</code> fails) containing the Parabolic Stop and Reverse values.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Joshua Ulrich
+</p>
+
+
+<h3>References</h3>
+
+<p>The following site(s) were used to code/document this
+indicator:<br />
+<a href="https://www.linnsoft.com/techind/parabolic-sar-sar">https://www.linnsoft.com/techind/parabolic-sar-sar</a><br />
+<a href="http://www.fmlabs.com/reference/SAR.htm">http://www.fmlabs.com/reference/SAR.htm</a><br />
+<a href="http://www.stockcharts.com/school/doku.php?id=chart_school:technical_indicators:parabolic_sar">http://www.stockcharts.com/school/doku.php?id=chart_school:technical_indicators:parabolic_sar</a><br />
+<a href="https://www.metastock.com/Customer/Resources/TAAZ/?p=87">https://www.metastock.com/Customer/Resources/TAAZ/?p=87</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>See <code><a href="ATR.html">ATR</a></code> and <code><a href="ADX.html">ADX</a></code>, which were also
+developed by Welles Wilder.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+data(ttrc)
+sar &lt;- SAR(ttrc[,c("High","Low")])
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TTR</em> version 0.23-2 <a href="00Index.html">Index</a>]</div>
+</body></html>

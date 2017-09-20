@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: True Range / Average True Range</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for ATR {TTR}"><tr><td>ATR {TTR}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>True Range / Average True Range</h2>
+
+<h3>Description</h3>
+
+<p>True range (TR) is a measure of volatility of a High-Low-Close series;
+average true range (ATR) is a Welles Wilder's style moving average of the TR.
+Developed by J. Welles Wilder in 1978.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ATR(HLC, n = 14, maType, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>HLC</code></td>
+<td>
+<p>Object that is coercible to xts or matrix and contains
+High-Low-Close prices.</p>
+</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+<p>Number of periods for moving average.</p>
+</td></tr>
+<tr valign="top"><td><code>maType</code></td>
+<td>
+<p>A function or a string naming the function to be called.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Other arguments to be passed to the <code>maType</code> function.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>TR incorporates yesterday's close in the calculation (high minus low).  E.g.
+if yesterday's close was higher than today's high, then the TR would equal
+yesterday's close minus today's low.
+</p>
+<p>The ATR is a component of the Welles Wilder Directional Movement Index
+(<code>DX</code>, <code>ADX</code>).
+</p>
+
+
+<h3>Value</h3>
+
+<p>A object of the same class as <code>HLC</code> or a matrix (if
+<code>try.xts</code> fails) containing the columns:
+</p>
+
+<dl>
+<dt> tr </dt><dd><p> The true range of the series. </p>
+</dd>
+<dt> atr </dt><dd><p> The average (as specified by <code>ma</code>) true range of the series. </p>
+</dd>
+<dt> trueHigh </dt><dd><p> The true high of the series. </p>
+</dd>
+<dt> trueLow </dt><dd><p> The true low of the series. </p>
+</dd>
+</dl>
+
+
+
+<h3>Author(s)</h3>
+
+<p>Joshua Ulrich
+</p>
+
+
+<h3>References</h3>
+
+<p>The following site(s) were used to code/document this
+indicator:<br /> <a href="http://www.fmlabs.com/reference/TR.htm">http://www.fmlabs.com/reference/TR.htm</a><br />
+<a href="http://www.fmlabs.com/reference/ATR.htm">http://www.fmlabs.com/reference/ATR.htm</a><br />
+<a href="https://www.metastock.com/Customer/Resources/TAAZ/?p=35">https://www.metastock.com/Customer/Resources/TAAZ/?p=35</a><br />
+<a href="https://www.linnsoft.com/techind/true-range-tr">https://www.linnsoft.com/techind/true-range-tr</a><br />
+<a href="http://www.stockcharts.com/school/doku.php?id=chart_school:technical_indicators:average_true_range_atr">http://www.stockcharts.com/school/doku.php?id=chart_school:technical_indicators:average_true_range_atr</a><br />
+</p>
+
+
+<h3>See Also</h3>
+
+<p>See <code><a href="MovingAverages.html">EMA</a></code>, <code><a href="MovingAverages.html">SMA</a></code>, etc. for moving average
+options; and note Warning section.  See <code><a href="ADX.html">DX</a></code>, which uses true
+range.  See <code><a href="chaikinVolatility.html">chaikinVolatility</a></code> for another volatility measure.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+data(ttrc)
+atr &lt;- ATR(ttrc[,c("High","Low","Close")], n=14)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TTR</em> version 0.23-2 <a href="00Index.html">Index</a>]</div>
+</body></html>

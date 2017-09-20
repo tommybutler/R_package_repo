@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Add an additional regressor to be used for fitting and...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for add_regressor {prophet}"><tr><td>add_regressor {prophet}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Add an additional regressor to be used for fitting and predicting.</h2>
+
+<h3>Description</h3>
+
+<p>The dataframe passed to 'fit' and 'predict' will have a column with the
+specified name to be used as a regressor. When standardize='auto', the
+regressor will be standardized unless it is binary. The regression
+coefficient is given a prior with the specified scale parameter.
+Decreasing the prior scale will add additional regularization. If no
+prior scale is provided, holidays.prior.scale will be used.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+add_regressor(m, name, prior.scale = NULL, standardize = "auto")
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>m</code></td>
+<td>
+<p>Prophet object.</p>
+</td></tr>
+<tr valign="top"><td><code>name</code></td>
+<td>
+<p>String name of the regressor</p>
+</td></tr>
+<tr valign="top"><td><code>prior.scale</code></td>
+<td>
+<p>Float scale for the normal prior. If not provided,
+holidays.prior.scale will be used.</p>
+</td></tr>
+<tr valign="top"><td><code>standardize</code></td>
+<td>
+<p>Bool, specify whether this regressor will be standardized
+prior to fitting. Can be 'auto' (standardize if not binary), True, or
+False.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>The prophet model with the regressor added.
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>prophet</em> version 0.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

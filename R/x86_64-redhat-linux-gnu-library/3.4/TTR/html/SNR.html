@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Signal to Noise Ratio</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for SNR {TTR}"><tr><td>SNR {TTR}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Signal to Noise Ratio</h2>
+
+<h3>Description</h3>
+
+<p>The n-day SNR for a given market is calculated by taking the absolute
+price change over an n-day period and dividing it by the average
+n-day volatility.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+SNR(HLC, n, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>HLC</code></td>
+<td>
+<p>Object that is coercible to xts or matrix and contains
+High-Low-Close prices.</p>
+</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+<p>Number of periods for moving average.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Other arguments to be passed to <code><a href="ATR.html">ATR</a></code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p style="text-align: center;"><i>SNR = abs(Cl - lag(Cl,n)) / ATR(HLC, n)$atr</i></p>
+
+<p>Using average true range as the volatility measure captures more of the
+intraday and overnight volatility in a way that a measurement of
+Close-to-Close price change does not.
+</p>
+<p>The interpretation is then relatively intuitive: an SNR value of five
+indicates that the market has moved five times the volatility (average true
+range) over the given look-back period.
+</p>
+
+
+<h3>Value</h3>
+
+<p>A object of the same class as HLC or a matrix (if try.xts fails)
+containing the signal to noise ratio.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Peter Carl
+</p>
+
+
+<h3>References</h3>
+
+<p>Skeggs, James and Hill, Alex (2015). Back in Black Part 2: The 
+Opportunity Set for Trend Following.
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>TTR</em> version 0.23-2 <a href="00Index.html">Index</a>]</div>
+</body></html>

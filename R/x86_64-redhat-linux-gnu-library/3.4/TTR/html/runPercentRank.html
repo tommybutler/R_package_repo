@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Percent Rank over a Moving Window</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for runPercentRank {TTR}"><tr><td>runPercentRank {TTR}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Percent Rank over a Moving Window</h2>
+
+<h3>Description</h3>
+
+<p>This function computes a running/rolling percentage rank.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+runPercentRank(x, n = 260, cumulative = FALSE, exact.multiplier = 0.5)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>Object coercible to xts or matrix.</p>
+</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+<p>Number of periods to use in the window or, if
+<code>cumulative=TRUE</code>, the number of observations to use before the first
+result is returned. Must be between 1 and <code>nrow(x)</code>, inclusive.</p>
+</td></tr>
+<tr valign="top"><td><code>cumulative</code></td>
+<td>
+<p>Logical, use from-inception calculation?</p>
+</td></tr>
+<tr valign="top"><td><code>exact.multiplier</code></td>
+<td>
+<p>The weight applied to identical values in the window.
+Must be between 0 and 1, inclusive. See details.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>The computation for a percentage rank can vary depending on the weight given
+to values in the window identical to the value being ranked.  This weight can
+be set using the <code>exact.multiplier</code> argument which defaults to 0.5.
+</p>
+
+
+<h3>Value</h3>
+
+<p>A object of percent ranks over a n-period moving window of the same
+class as <code>x</code> and <code>y</code> or a vector (if <code>try.xts</code> fails).
+</p>
+
+
+<h3>Note</h3>
+
+<p>It may be important to note that this computation is different from the
+one used in Microsoft Excel's PERCENTRANK formula.  Excel's computation is
+rather strange and gives inconsistent results as it uses interpolation to
+rank values that are not found within the lookback window.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Charlie Friedemann
+</p>
+
+
+<h3>References</h3>
+
+<p>The following site(s) were used to code/document this
+indicator:<br /> <a href="http://en.wikipedia.org/wiki/Percentile_rank">http://en.wikipedia.org/wiki/Percentile_rank</a><br />
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>TTR</em> version 0.23-2 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: McLeod-Li test</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for McLeod.Li.test {TSA}"><tr><td>McLeod.Li.test {TSA}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>McLeod-Li test</h2>
+
+<h3>Description</h3>
+
+<p>Perform the McLeod-Li test for conditional heteroscedascity
+(ARCH).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+McLeod.Li.test(object, y, gof.lag, col = "red", omit.initial = TRUE, 
+plot = TRUE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+<p>a fitted Arima model, ususally the output from the arima
+function. If supplied, then the Mcleod-Li test is applied to the residuals
+of the model, and the y-argument is ignored.</p>
+</td></tr>
+<tr valign="top"><td><code>y</code></td>
+<td>
+<p>time series data with which one wants to test for the presence of
+conditional heteroscedascity</p>
+</td></tr>  
+<tr valign="top"><td><code>gof.lag</code></td>
+<td>
+<p>maximum number of lags for which the test is carried out.</p>
+</td></tr>
+<tr valign="top"><td><code>col</code></td>
+<td>
+<p>color of the reference line</p>
+</td></tr>
+<tr valign="top"><td><code>omit.initial</code></td>
+<td>
+<p>suppress the initial (d+Ds) residuals if set to be TRUE</p>
+</td></tr>
+<tr valign="top"><td><code>plot</code></td>
+<td>
+<p>suppress plotting if set to be FALSE</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p> other arguments to be passed to the plot function</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>The test checks for the presence of conditional heteroscedascity by computing the
+Ljung-Box (portmanteau) test with the squared data (if y is supplied and object
+suppressed) or with the squared residuals from an arima model (if an arima
+model is passed to the function via the object argument.) 
+</p>
+
+
+<h3>Value</h3>
+
+<table summary="R valueblock">
+<tr valign="top"><td><code>pvlaues</code></td>
+<td>
+<p>the vector of p-values for the Ljung-Box test statistics
+computed using the first <i>m</i> lags of the ACF of the squared data or residuals,
+for <i>m</i> ranging from 1 to gof.lag.</p>
+</td></tr>
+</table>
+
+
+<h3>Author(s)</h3>
+
+<p>Kung-Sik Chan</p>
+
+
+<h3>References</h3>
+
+<p>McLeod, A. I. and W. K. Li (1983). Diagnostic checking ARMA time series models
+using squared residual autocorrelations. Journal of Time Series Analysis, 4,
+269273.</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(CREF)
+r.cref=diff(log(CREF))*100
+McLeod.Li.test(y=r.cref)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TSA</em> version 1.01 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Functions to create Technical Trading Rules (TTR)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for TTR {TTR}"><tr><td>TTR {TTR}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Functions to create Technical Trading Rules (TTR)</h2>
+
+<h3>Description</h3>
+
+<p>This package contains many of the most popular technical analysis functions,
+as well as functions to retrieve U.S. stock symbols, and data from Yahoo
+Finance.
+</p>
+
+
+<h3>Details</h3>
+
+<p>Users will probably be most interested in the following functions:<br />
+<code><a href="ADX.html">ADX</a></code><br /> <code><a href="bollingerBands.html">BBands</a></code><br /> <code><a href="changes.html">changes</a></code><br />
+<code><a href="MovingAverages.html">MovingAverages</a></code><br /> <code><a href="MACD.html">MACD</a></code><br /> <code><a href="RSI.html">RSI</a></code><br />
+<code><a href="runFun.html">runFun</a></code><br /> <code><a href="stochastics.html">stoch</a></code><br /> <code><a href="MovingAverages.html">VWAP</a></code><br />
+<code><a href="WebData.html">WebData</a></code><br />
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Joshua Ulrich
+</p>
+<p>Maintainer: Joshua Ulrich
+</p>
+
+
+<h3>References</h3>
+
+<p>The following sites were used to code/document this package:<br />
+<a href="http://www.fmlabs.com/reference/default.htm">http://www.fmlabs.com/reference/default.htm</a><br />
+<a href="https://www.metastock.com/Customer/Resources/TAAZ/">https://www.metastock.com/Customer/Resources/TAAZ/</a><br />
+<a href="https://www.linnsoft.com/indicators">https://www.linnsoft.com/indicators</a><br />
+<a href="http://www.stockcharts.com/school/doku.php?id=chart_school:technical_indicators">http://www.stockcharts.com/school/doku.php?id=chart_school:technical_indicators</a><br />
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+data(ttrc)
+
+# Bollinger Bands
+bbands &lt;- BBands( ttrc[,c("High","Low","Close")] )
+
+# Directional Movement Index
+adx &lt;- ADX(ttrc[,c("High","Low","Close")])
+
+# Moving Averages
+ema &lt;- EMA(ttrc[,"Close"], n=20)
+sma &lt;- SMA(ttrc[,"Close"], n=20)
+
+# MACD
+macd &lt;- MACD( ttrc[,"Close"] )
+
+# RSI
+rsi &lt;- RSI(ttrc[,"Close"])
+
+# Stochastics
+stochOsc &lt;- stoch(ttrc[,c("High","Low","Close")])
+
+### Note: you must have a working internet connection
+### for the examples below to work!
+
+# Fetch U.S. symbols from the internet
+nyseSymbols &lt;- stockSymbols("NYSE")
+
+# Fetch Yahoo! Finance data from the internet
+ge &lt;- getYahooData("GE", 19990404, 20050607, adjust = FALSE)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TTR</em> version 0.23-2 <a href="00Index.html">Index</a>]</div>
+</body></html>

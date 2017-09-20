@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Initialize logistic growth.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for logistic_growth_init {prophet}"><tr><td>logistic_growth_init {prophet}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Initialize logistic growth.</h2>
+
+<h3>Description</h3>
+
+<p>Provides a strong initialization for logistic growth by calculating the
+growth and offset parameters that pass the function through the first and
+last points in the time series.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+logistic_growth_init(df)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>df</code></td>
+<td>
+<p>Data frame with columns ds (date), cap_scaled (scaled capacity),
+y_scaled (scaled time series), and t (scaled time).</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A vector (k, m) with the rate (k) and offset (m) of the logistic
+growth function.
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>prophet</em> version 0.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

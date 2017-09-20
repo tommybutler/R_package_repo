@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Generalized Portmanteau Tests for GARCH Models</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for gBox {TSA}"><tr><td>gBox {TSA}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Generalized Portmanteau Tests for GARCH Models</h2>
+
+<h3>Description</h3>
+
+<p>Perform a goodness-of-fit test for the GARCH model by checking whether the 
+standardized residuals are iid based on the ACF of the absolute residuals
+or squared residuals.</p>
+
+
+<h3>Usage</h3>
+
+<pre>gBox(model, lags = 1:20, x, method = c("squared", "absolute")[1], plot = TRUE)</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>model</code></td>
+<td>
+<p>fitted model from the garch function of the tseries library</p>
+</td></tr>
+<tr valign="top"><td><code>lags</code></td>
+<td>
+<p>a vector of maximum ACF lags to be  used in the test</p>
+</td></tr>
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>time series data to which the GARCH model is fitted</p>
+</td></tr>
+<tr valign="top"><td><code>method</code></td>
+<td>
+<p>&quot;squared&quot;: test is based on squared residuals; &quot;absolute&quot;: test is
+based on absolute residuals</p>
+</td></tr>
+<tr valign="top"><td><code>plot</code></td>
+<td>
+<p>logical variable, if TRUE, the p-values of the tests are plotted</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<table summary="R valueblock">
+<tr valign="top"><td><code>lags</code></td>
+<td>
+<p>lags in the input</p>
+</td></tr>
+<tr valign="top"><td><code>pvalue</code></td>
+<td>
+<p>a vector of p-values of the tests</p>
+</td></tr>
+<tr valign="top"><td><code>method</code></td>
+<td>
+<p>method used</p>
+</td></tr>
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>x</p>
+</td></tr>
+</table>
+
+
+<h3>Author(s)</h3>
+
+<p>Kung-Sik Chan</p>
+
+
+<h3>References</h3>
+
+<p>&quot;Time Series Analysis, with Applications in R&quot; by J.D. Cryer and K.S. Chan</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+library(tseries)
+data(CREF)
+r.cref=diff(log(CREF))*100
+m1=garch(x=r.cref,order=c(1,1))
+summary(m1)
+#gBox(m1,x=r.cref,method='squared')
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TSA</em> version 1.01 <a href="00Index.html">Index</a>]</div>
+</body></html>

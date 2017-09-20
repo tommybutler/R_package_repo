@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: De-Trended Price Oscillator</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for DPO {TTR}"><tr><td>DPO {TTR}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>De-Trended Price Oscillator</h2>
+
+<h3>Description</h3>
+
+<p>The Detrended Price Oscillator (DPO) removes the trend in prices - or other
+series - by subtracting a moving average of the price from the price.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+DPO(x, n = 10, maType, shift = n/2 + 1, percent = FALSE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>Price, volume, etc. series that is coercible to xts or matrix.</p>
+</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+<p>Number of periods for moving average.</p>
+</td></tr>
+<tr valign="top"><td><code>maType</code></td>
+<td>
+<p>A function or a string naming the function to be called.</p>
+</td></tr>
+<tr valign="top"><td><code>shift</code></td>
+<td>
+<p>The number of periods to shift the moving average.</p>
+</td></tr>
+<tr valign="top"><td><code>percent</code></td>
+<td>
+<p>logical; if <code>TRUE</code>, the percentage difference between the
+slow and fast moving averages is returned, otherwise the difference between
+the respective averages is returned.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Other arguments to be passed to the <code>maType</code> function.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>The Detrended Price shows cycles and overbought / oversold conditions.
+</p>
+
+
+<h3>Value</h3>
+
+<p>A object of the same class as <code>x</code> or a vector (if <code>try.xts</code>
+fails) containing the DPO values.
+</p>
+
+
+<h3>Note</h3>
+
+<p>DPO does not extend to the last date because it is based on a displaced moving
+average. The calculation shifts the results <code>shift</code> periods, so the last
+<code>shift</code> periods will be zero.<br />
+As stated above, the DPO can be used on any univariate series, not just price.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Joshua Ulrich
+</p>
+
+
+<h3>References</h3>
+
+<p>The following site(s) were used to code/document this
+indicator:<br />
+<a href="http://www.fmlabs.com/reference/DPO.htm">http://www.fmlabs.com/reference/DPO.htm</a><br />
+<a href="https://www.metastock.com/Customer/Resources/TAAZ/?p=48">https://www.metastock.com/Customer/Resources/TAAZ/?p=48</a><br />
+<a href="http://www.stockcharts.com/school/doku.php?id=chart_school:technical_indicators:detrended_price_osci">http://www.stockcharts.com/school/doku.php?id=chart_school:technical_indicators:detrended_price_osci</a><br />
+</p>
+
+
+<h3>See Also</h3>
+
+<p>See <code><a href="MovingAverages.html">EMA</a></code>, <code><a href="MovingAverages.html">SMA</a></code>, etc. for moving average
+options; and note Warning section.  See <code><a href="MACD.html">MACD</a></code> for a general
+oscillator.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+data(ttrc)
+priceDPO &lt;- DPO(ttrc[,"Close"])
+volumeDPO &lt;- DPO(ttrc[,"Volume"])
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TTR</em> version 0.23-2 <a href="00Index.html">Index</a>]</div>
+</body></html>

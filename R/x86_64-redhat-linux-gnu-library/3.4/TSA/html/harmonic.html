@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Construct harmonic functions for fitting harmonic trend model</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for harmonic {TSA}"><tr><td>harmonic {TSA}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Construct harmonic functions for fitting harmonic trend model</h2>
+
+<h3>Description</h3>
+
+<p>The function creates a matrix of the first m pairs of harmonic functions for
+fitting a harmonic trend 
+(cosine-sine trend, Fourier regresssion) models with the response
+being x, a time series.  
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+harmonic(x, m = 1)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>a time series</p>
+</td></tr>
+<tr valign="top"><td><code>m</code></td>
+<td>
+<p>the number of pairs of harmonic functions to be created; 2m must be
+less than or equal to the frequency of x</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>a matrix consisting of <i>\cos(2k &pi; t), \sin(2k &pi; t), k=1,2,...,m,</i>
+excluding any zero functions.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Kung-Sik Chan</p>
+
+
+<h3>See Also</h3>
+
+ <p><code><a href="season.html">season</a></code></p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(tempdub)
+# first creates the first pair of harmonic functions and then fit the model
+har.=harmonic(tempdub,1)
+model4=lm(tempdub~har.)
+summary(model4)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TSA</em> version 1.01 <a href="00Index.html">Index</a>]</div>
+</body></html>

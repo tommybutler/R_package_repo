@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Forecasting using the bagged ETS method</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for forecast.baggedETS {forecast}"><tr><td>forecast.baggedETS {forecast}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Forecasting using the bagged ETS method</h2>
+
+<h3>Description</h3>
+
+<p>Returns forecasts and other information for bagged ETS models.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S3 method for class 'baggedETS'
+forecast(object, h = ifelse(frequency(object$x) &gt; 1, 2 *
+  frequency(object$x), 10), ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+<p>An object of class &quot;<code>baggedETS</code>&quot; resulting from a call to
+<code><a href="baggedETS.html">baggedETS</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>h</code></td>
+<td>
+<p>Number of periods for forecasting.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Additional arguments passed to <code><a href="ets.html">ets</a></code></p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Intervals are calculated as min and max values over the point forecasts from
+the ETS models in the ensemble. I.e., the intervals are not prediction
+intervals, but give an indication of how different the forecasts within the
+ensemble are.
+</p>
+
+
+<h3>Value</h3>
+
+<p>An object of class &quot;<code>forecast</code>&quot;.
+</p>
+<p>The function <code>summary</code> is used to obtain and print a summary of the
+results, while the function <code>plot</code> produces a plot of the forecasts and
+prediction intervals.
+</p>
+<p>An object of class &quot;<code>forecast</code>&quot; is a list containing at least the
+following elements: </p>
+<table summary="R valueblock">
+<tr valign="top"><td><code>model</code></td>
+<td>
+<p>A list containing information about the
+fitted model</p>
+</td></tr> <tr valign="top"><td><code>method</code></td>
+<td>
+<p>The name of the forecasting method as a
+character string</p>
+</td></tr> <tr valign="top"><td><code>mean</code></td>
+<td>
+<p>Point forecasts as a time series</p>
+</td></tr>
+<tr valign="top"><td><code>lower</code></td>
+<td>
+<p>Lower limits for prediction intervals</p>
+</td></tr> <tr valign="top"><td><code>upper</code></td>
+<td>
+<p>Upper
+limits for prediction intervals</p>
+</td></tr> <tr valign="top"><td><code>level</code></td>
+<td>
+<p>The confidence values
+associated with the prediction intervals</p>
+</td></tr> <tr valign="top"><td><code>x</code></td>
+<td>
+<p>The original time series
+(either <code>object</code> itself or the time series used to create the model
+stored as <code>object</code>).</p>
+</td></tr> <tr valign="top"><td><code>xreg</code></td>
+<td>
+<p>The external regressors used in
+fitting (if given).</p>
+</td></tr> <tr valign="top"><td><code>residuals</code></td>
+<td>
+<p>Residuals from the fitted model. That
+is x minus fitted values.</p>
+</td></tr> <tr valign="top"><td><code>fitted</code></td>
+<td>
+<p>Fitted values (one-step forecasts)</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Other arguments</p>
+</td></tr>
+</table>
+
+
+<h3>Author(s)</h3>
+
+<p>Christoph Bergmeir, Fotios Petropoulos
+</p>
+
+
+<h3>References</h3>
+
+<p>Bergmeir, C., R. J. Hyndman, and J. M. Benitez (2016). Bagging
+Exponential Smoothing Methods using STL Decomposition and Box-Cox
+Transformation. International Journal of Forecasting 32, 303-312.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="baggedETS.html">baggedETS</a></code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+fit &lt;- baggedETS(WWWusage)
+fcast &lt;- forecast(fit)
+plot(fcast)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>forecast</em> version 8.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

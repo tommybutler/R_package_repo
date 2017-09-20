@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Chande Momentum Oscillator</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for CMO {TTR}"><tr><td>CMO {TTR}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Chande Momentum Oscillator</h2>
+
+<h3>Description</h3>
+
+<p>The Chande Momentum Oscillator (CMO) is a modified RSI.  Developed by Tushar
+S. Chande.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+CMO(x, n = 14)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>Price, volume, etc. series that is coercible to xts or matrix.</p>
+</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+<p>Number of periods to use.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>The CMO divides the total movement by the net movement ([up - down] / [up +
+down]), where RSI divides the upward movement by the net movement (up / [up +
+down]).
+</p>
+
+
+<h3>Value</h3>
+
+<p>A object of the same class as <code>x</code> or a vector (if <code>try.xts</code>
+fails) containing Chande Momentum Oscillator values.
+</p>
+
+
+<h3>Note</h3>
+
+<p>There are several ways to interpret the CMO:
+</p>
+
+<ol>
+<li><p> Values over/under +/- 50 indicate overbought/oversold conditions.
+</p>
+</li>
+<li><p> High CMO values indicate strong trends.
+</p>
+</li>
+<li><p> When the CMO crosses above/below a moving average of the CMO,
+it is a buy/sell signal.
+</p>
+</li></ol>
+
+
+
+<h3>Author(s)</h3>
+
+<p>Joshua Ulrich
+</p>
+
+
+<h3>References</h3>
+
+<p>The following site(s) were used to code/document this
+indicator:<br /> <a href="http://www.fmlabs.com/reference/CMO.htm">http://www.fmlabs.com/reference/CMO.htm</a><br />
+</p>
+
+
+<h3>See Also</h3>
+
+<p>See <code><a href="RSI.html">RSI</a></code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+data(ttrc)
+cmo &lt;- CMO(ttrc[,"Close"])
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TTR</em> version 0.23-2 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Aroon</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for aroon {TTR}"><tr><td>aroon {TTR}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Aroon</h2>
+
+<h3>Description</h3>
+
+<p>The Aroon indicator attempts to identify starting trends.  The indicator
+consists of up and down lines, which measure how long it has been since the
+highest high/lowest low has occurred in the last <code>n</code> periods.  Developed
+by Tushar Chande in 1995.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+aroon(HL, n = 20)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>HL</code></td>
+<td>
+<p>Object that is coercible to xts or matrix and contains either a
+High-Low price series, or a Close price series.</p>
+</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+<p>Number of periods to use in the calculation.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Aroon up (down) is the elapsed time, expressed as a percentage, between today
+and the highest (lowest) price in the last <code>n</code> periods.  If today's
+price is a new high (low) Aroon up (down) will be 100. Each subsequent period
+without another new high (low) causes Aroon up (down) to decrease by (1 /
+<code>n</code>) x 100.
+</p>
+
+
+<h3>Value</h3>
+
+<p>A object of the same class as <code>HL</code> or a matrix (if
+<code>try.xts</code> fails) containing the columns:
+</p>
+
+<dl>
+<dt> aroonUp </dt><dd><p> The Aroon up indicator. </p>
+</dd>
+<dt> aroonDn </dt><dd><p> The Aroon down indicator. </p>
+</dd>
+<dt> oscillator </dt><dd><p> The Aroon oscillator (<code>aroonUp - aroonDn</code>). </p>
+</dd>
+</dl>
+
+
+
+<h3>Note</h3>
+
+<p>If High-Low prices are given, the function calculates the max/min using
+the high/low prices.  Otherwise the function calculates the max/min of the
+single series.
+</p>
+<p>Up (down) trends are indicated when the aroonUp(Dn) is between 70 and 100.
+Strong trends are indicated when when the aroonUp(Dn) is above 70 while the
+aroonDn(Up) is below 30.  Also, crossovers may be useful.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Joshua Ulrich
+</p>
+
+
+<h3>References</h3>
+
+<p>The following site(s) were used to code/document this
+indicator:<br /> <a href="http://www.fmlabs.com/reference/Aroon.htm">http://www.fmlabs.com/reference/Aroon.htm</a><br />
+<a href="http://www.fmlabs.com/reference/AroonOscillator.htm">http://www.fmlabs.com/reference/AroonOscillator.htm</a><br />
+<a href="https://www.linnsoft.com/techind/aroon-arn">https://www.linnsoft.com/techind/aroon-arn</a><br />
+<a href="http://stockcharts.com/school/doku.php?id=chart_school:technical_indicators:aroon">http://stockcharts.com/school/doku.php?id=chart_school:technical_indicators:aroon</a><br />
+</p>
+
+
+<h3>See Also</h3>
+
+<p>See <code><a href="CCI.html">CCI</a></code>, <code><a href="ADX.html">ADX</a></code>, <code><a href="TDI.html">TDI</a></code>,
+<code><a href="VHF.html">VHF</a></code>, <code><a href="GMMA.html">GMMA</a></code> for other indicators that measure trend
+direction/strength.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+## Get Data and Indicator ##
+data(ttrc)
+trend &lt;- aroon( ttrc[,c("High", "Low")], n=20 )
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TTR</em> version 0.23-2 <a href="00Index.html">Index</a>]</div>
+</body></html>

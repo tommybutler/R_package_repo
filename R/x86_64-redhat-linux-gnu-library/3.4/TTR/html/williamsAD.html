@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Williams Accumulation / Distribution</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for williamsAD {TTR}"><tr><td>williamsAD {TTR}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Williams Accumulation / Distribution</h2>
+
+<h3>Description</h3>
+
+<p>The Williams Accumulation / Distribution (AD) line is a measure of market
+momentum.  Developed by Larry Williams.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+williamsAD(HLC)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>HLC</code></td>
+<td>
+<p>Object that is coercible to xts or matrix and contains
+High-Low-Close prices.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>The Williams AD line differs from OBV and chaikinAD in that it doesn't take
+volume into account.
+</p>
+
+
+<h3>Value</h3>
+
+<p>A object of the same class as <code>HLC</code> or a vector (if
+<code>try.xts</code> fails) containing the accumulation / distribution values.
+</p>
+
+
+<h3>Note</h3>
+
+<p>The Accumulation/Distribution Line is interpreted by looking for a
+divergence in the direction of the indicator relative to price.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Joshua Ulrich
+</p>
+
+
+<h3>References</h3>
+
+<p>The following site(s) were used to code/document this
+indicator:<br />
+<a href="http://www.fmlabs.com/reference/WilliamsAD.htm">http://www.fmlabs.com/reference/WilliamsAD.htm</a><br />
+<a href="http://www.metastock.com/Customer/Resources/TAAZ/#125">http://www.metastock.com/Customer/Resources/TAAZ/#125</a><br />
+</p>
+
+
+<h3>See Also</h3>
+
+<p>See <code><a href="OBV.html">OBV</a></code>, <code><a href="chaikinAD.html">chaikinAD</a></code>, and
+<code><a href="ATR.html">ATR</a></code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+data(ttrc)
+ad &lt;- williamsAD(ttrc[,c("High","Low","Close")])
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TTR</em> version 0.23-2 <a href="00Index.html">Index</a>]</div>
+</body></html>

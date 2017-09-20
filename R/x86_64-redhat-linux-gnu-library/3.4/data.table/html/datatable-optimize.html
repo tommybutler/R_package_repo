@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Optimisations in data.table</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for datatable.optimize {data.table}"><tr><td>datatable.optimize {data.table}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Optimisations in data.table</h2>
+
+<h3>Description</h3>
+
+<p><code>data.table</code> internally optimises certain expressions inorder to improve 
+performance. This section briefly summarises those optimisations.
+</p>
+<p>Note that there's no additional input needed from the user to take advantage 
+of these optimisations. They happen automatically.
+</p>
+<p>Run the code under the <em>example</em> section to get a feel for the performance 
+benefits from these optimisations.
+</p>
+
+
+<h3>Details</h3>
+
+<p><code>data.table</code> reads the global option <code>datatable.optimize</code> to figure 
+out what level of optimisation is required. The default value <code>Inf</code> 
+activates <em>all</em> available optimisations.
+</p>
+<p>At optimisation level <code>&gt;= 1</code>, i.e., <code>getOption("datatable.optimize")</code> 
+&gt;= 1, these are the optimisations:
+</p>
+
+<ul>
+<li><p> The base function <code>order</code> is internally replaced with 
+<code>data.table</code>'s <em>fast ordering</em>. That is, <code>dt[order(...)]</code> 
+gets internally optimised to <code>dt[forder(...)]</code>. 
+</p>
+</li>
+<li><p> The expression <code>dt[, lapply(.SD, fun), by=.]</code> gets optimised 
+to <code>dt[, list(fun(a), fun(b), ...), by=.]</code> where <code>a,b, ...</code> are 
+columns in <code>.SD</code>. This improves performance tremendously.
+</p>
+</li>
+<li><p> Similarly, the expression <code>dt[, c(.N, lapply(.SD, fun)), by=.]</code> 
+gets optimised to <code>dt[, list(.N, fun(a), fun(b), ...)]</code>. <code>.N</code> is 
+just for example here. 
+</p>
+</li>
+<li> <p><code>base::mean</code> function is internally optimised to use 
+<code>data.table</code>'s <code>fastmean</code> function. <code>mean()</code> from <code>base</code> 
+is an S3 generic and gets slow with many groups.
+</p>
+</li></ul>
+
+<p>At optimisation level <code>&gt;= 2</code>, i.e., <code>getOption("datatable.optimize")</code> &gt;= 2, additional optimisations are implemented on top of the optimisations already shown above. 
+</p>
+
+<ul>
+<li><p> When expressions in <code>j</code> which contains only these functions 
+<code>min, max, mean, median, var, sd, prod</code>, for example, 
+<code>dt[, list(mean(x), median(x), min(y), max(y)), by=z]</code>, they are very 
+effectively optimised using, what we call, <em>GForce</em>. These functions 
+are replaced with <code>gmean, gmedian, gmin, gmax</code> instead. 
+</p>
+<p>Normally, once the rows belonging to each groups are identified, the values 
+corresponding to the group is gathered and the <code>j-expression</code> is 
+evaluated. This can be improved by computing the result directly without 
+having to gather the values or evaluating the expression for each group 
+(which can get costly with large number of groups) by implementing it 
+specifically for a particular function. As a result, it is extremely fast.
+</p>
+</li>
+<li><p> In addition to all the functions above, '.N' is also optimised to 
+use GForce. It when used separately or combined with the functions mentioned 
+above still uses GForce.
+</p>
+</li>
+<li><p> Expressions of the form <code>DT[i, j, by]</code> are also optimised when 
+<code>i</code> is a <em>subset</em> operation and <code>j</code> is any/all of the functions 
+discussed above.
+</p>
+</li></ul>
+
+<p><b>Auto indexing:</b> <code>data.table</code> also allows for blazing fast subsets by 
+creating an <em>index</em> on the first run. Any successive subsets on the same 
+column then reuses this index to <em>binary search</em> (instead of 
+<em>vector scan</em>) and is therefore fast.
+</p>
+<p>At the moment, expressions of the form <code>dt[col == val]</code> and 
+<code>dt[col %in% val]</code> are both optimised. We plan to expand this to more 
+operators and conditions in the future.
+</p>
+<p>Auto indexing can be switched off with the global option 
+<code>options(datatable.auto.index = FALSE)</code>. To switch off using existing 
+indices set global option <code>options(datatable.use.index = FALSE)</code>.
+</p>
+
+
+<h3>See Also</h3>
+
+ <p><code><a href="setNumericRounding.html">setNumericRounding</a></code>, <code><a href="setNumericRounding.html">getNumericRounding</a></code> </p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: 
+# Generate a big data.table with a relatively many columns
+set.seed(1L)
+dt = lapply(1:20, function(x) sample(c(-100:100), 5e6L, TRUE))
+setDT(dt)[, id := sample(1e5, 5e6, TRUE)]
+print(object.size(dt), units="Mb") # 400MB, not huge, but will do
+
+# 'order' optimisation
+options(datatable.optimize = 1L) # optimisation 'on'
+system.time(ans1 &lt;- dt[order(id)])
+options(datatable.optimize = 0L) # optimisation 'off'
+system.time(ans2 &lt;- dt[order(id)])
+identical(ans1, ans2)
+
+# optimisation of 'lapply(.SD, fun)'
+options(datatable.optimize = 1L) # optimisation 'on'
+system.time(ans1 &lt;- dt[, lapply(.SD, min), by=id])
+options(datatable.optimize = 0L) # optimisation 'off'
+system.time(ans2 &lt;- dt[, lapply(.SD, min), by=id])
+identical(ans1, ans2)
+
+# optimisation of 'mean'
+options(datatable.optimize = 1L) # optimisation 'on'
+system.time(ans1 &lt;- dt[, lapply(.SD, mean), by=id])
+system.time(ans2 &lt;- dt[, lapply(.SD, base::mean), by=id])
+identical(ans1, ans2)
+
+# optimisation of 'c(.N, lapply(.SD, ))'
+options(datatable.optimize = 1L) # optimisation 'on'
+system.time(ans1 &lt;- dt[, c(.N, lapply(.SD, min)), by=id])
+options(datatable.optimize = 0L) # optimisation 'off'
+system.time(ans2 &lt;- dt[, c(N=.N, lapply(.SD, min)), by=id])
+identical(ans1, ans2)
+
+# GForce
+options(datatable.optimize = 2L) # optimisation 'on'
+system.time(ans1 &lt;- dt[, lapply(.SD, median), by=id])
+system.time(ans2 &lt;- dt[, lapply(.SD, function(x) as.numeric(stats::median(x))), by=id])
+identical(ans1, ans2)
+
+# restore optimization
+options(datatable.optimize = Inf)
+
+# auto indexing
+options(datatable.auto.index = FALSE)
+system.time(ans1 &lt;- dt[id == 100L]) # vector scan
+system.time(ans2 &lt;- dt[id == 100L]) # vector scan
+system.time(dt[id 
+
+options(datatable.auto.index = TRUE)
+system.time(ans1 &lt;- dt[id == 100L]) # index + binary search subset
+system.time(ans2 &lt;- dt[id == 100L]) # only binary search subset
+system.time(dt[id 
+
+
+## End(Not run)</pre>
+
+<hr /><div style="text-align: center;">[Package <em>data.table</em> version 1.10.4 <a href="00Index.html">Index</a>]</div>
+</body></html>
